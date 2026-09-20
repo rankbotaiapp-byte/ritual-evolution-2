@@ -15,7 +15,7 @@ import type { Niche } from "@/lib/axiom/types";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/admin")({
-  loader: () => listBusinesses(),
+  loader: () => (BUSINESS.active ? Promise.resolve([]) : listBusinesses()),
   component: AdminPage,
 });
 
