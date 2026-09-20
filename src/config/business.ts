@@ -2,19 +2,6 @@ import type { HaloTheme, Niche } from "@/lib/axiom/types";
 
 /**
  * THIS IS THE ONLY FILE YOU EDIT TO MAKE A CLIENT SHOP.
- *
- * 1. Use this template → new repo named after the shop.
- * 2. Replace the object below (or paste Scout's business.ts over it).
- * 3. Set active: true.
- * 4. Deploy that repo. Home = this shop. Desk = /admin PIN 4242.
- *
- * id = lowercase-dashes, no spaces (new-hope-tattoos).
- * niche = "barber" | "tattoo" | "food_truck"
- * halo = "ember" | "ink" | "solstice" | "spectrum"
- * heroImage = "/hero-tattoo.jpg" is the demo faded background.
- * Owner can replace that photo in Desk.
- *
- * Do not edit the type block above the = { . Only the values.
  */
 export const BUSINESS: {
   active: boolean;
@@ -39,21 +26,25 @@ export const BUSINESS: {
   }[];
   posts: string[];
 } = {
-  active: false,
-  id: "client-studio",
-  name: "Client Studio",
-  niche: "barber",
-  tagline: "Book through the night.",
-  about: "The owner fills photos, hours, and albums in Desk.",
-  halo: "ember",
+  active: true,
+  id: "ritual-evolution",
+  name: "Ritual Evolution",
+  niche: "tattoo",
+  tagline: "Fine jewelry, piercing, and tattoo in Ashland.",
+  about:
+    "Established in 2008. Ceremonial piercing, implant-grade jewelry, and custom tattoo. The owner fills hours, artists, and albums in Desk.",
+  halo: "ink",
   pin: "4242",
-  locationName: "",
-  locationNote: "",
+  locationName: "77 N Main St, Ashland, OR",
+  locationNote: "Downtown Ashland. Book after hours through the app.",
   heroImage: "/hero-tattoo.jpg",
   team: [
-    { name: "Chair 1", role: "Artist", bio: "Owner replaces this in Desk." },
-    { name: "Chair 2", role: "Artist", bio: "Owner replaces this in Desk." },
+    { name: "Chari", role: "Piercer", bio: "Owner replaces this in Desk." },
+    { name: "Artist 2", role: "Tattoo", bio: "Owner replaces this in Desk." },
   ],
-  offerings: [],
+  offerings: [
+    { member: 0, title: "Piercing session", description: "Consult and placement.", minutes: 45, cents: 8000, kind: "service" },
+    { member: 1, title: "Tattoo consult", description: "Draw, place, and hold the date.", minutes: 30, cents: 5000, kind: "service" },
+  ],
   posts: [],
 };
