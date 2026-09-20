@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { CalendarDays, KeyRound, LayoutGrid } from "lucide-react";
+import { CalendarDays, KeyRound, Store } from "lucide-react";
+import { BUSINESS } from "@/config/business";
 import { haloGradient } from "@/lib/axiom/halo";
 import { useChairSession, useStudioSession } from "@/lib/axiom/store";
 import type { HaloMood, HaloTheme } from "@/lib/axiom/types";
@@ -64,7 +65,7 @@ function navClass(active: boolean) {
 
 function BottomNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const factoryOn = pathname === "/" || pathname.startsWith("/discover");
+  const shopOn = pathname === "/" || pathname.startsWith("/b/");
   const bookedOn = pathname === "/booked" || pathname.startsWith("/booked/");
   const deskOn =
     pathname.startsWith("/admin") ||
@@ -72,10 +73,25 @@ function BottomNav() {
     pathname.startsWith("/chair") ||
     pathname.startsWith("/keys");
 
+  if (BUSINESS.active) {
+    return (
+      <nav className="grid grid-cols-2 border-t border-border bg-background px-1 py-1">
+        <Link to="/" className={navClass(shopOn)}>
+          <Store className="size-4" strokeWidth={shopOn ? 2.2 : 1.7} />
+          Shop
+        </Link>
+        <Link to="/booked" className={navClass(bookedOn)}>
+          <CalendarDays className="size-4" strokeWidth={bookedOn ? 2.2 : 1.7} />
+          Booked
+        </Link>
+      </nav>
+    );
+  }
+
   return (
     <nav className="grid grid-cols-3 border-t border-border bg-background px-1 py-1">
-      <Link to="/" className={navClass(factoryOn)}>
-        <LayoutGrid className="size-4" strokeWidth={factoryOn ? 2.2 : 1.7} />
+      <Link to="/" className={navClass(shopOn)}>
+        <Store className="size-4" strokeWidth={shopOn ? 2.2 : 1.7} />
         Factory
       </Link>
       <Link to="/booked" className={navClass(bookedOn)}>
